@@ -1,1 +1,1 @@
-web: GoViolin
+web: bin/runnable
