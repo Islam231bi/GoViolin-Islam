@@ -14,7 +14,13 @@ pipeline {
     stage('Building image') {
       steps {
         script {
-          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          try{
+            dockerImage = docker.build registry + ":$BUILD_NUMBER"
+          }
+          catch(e) {
+            echo "Docker Build Failed"
+             throw e
+          }
         }
       }
     }
